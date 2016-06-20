@@ -15,6 +15,7 @@
   "author": "Anthony Jackman",
   "license": "MIT",
   "devDependencies": {
+    "html-webpack-plugin": "^2.21.0",
     "webpack": "^1.13.1"
   }
 }
