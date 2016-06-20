@@ -1,5 +1,17 @@
 const webpack = require('webpack');
 
+exports.setupCSS = function(paths) {
+    return {
+        module: {
+            loaders: [{
+                test: /\.css$/,
+                loaders: ['style', 'css'],
+                include: paths
+            }]
+        }
+    };
+}
+
 exports.devServer = function(options) {
     return {
         // stating watch options here is to counter issues
