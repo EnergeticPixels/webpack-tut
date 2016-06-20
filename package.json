@@ -4,6 +4,7 @@
   "description": "This is a description of a webpack demo/intro from survivejs.com",
   "main": "index.js",
   "scripts": {
+    "build": "node_modules\\.bin\\webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
