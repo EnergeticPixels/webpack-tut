@@ -2,6 +2,10 @@
   "name": "webpack-demo",
   "version": "0.1.0",
   "description": "This is a description of a webpack demo/intro from survivejs.com",
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=3.0.0"
+  },
   "main": "index.js",
   "scripts": {
     "build": "node_modules\\.bin\\webpack",
@@ -18,6 +22,7 @@
   "devDependencies": {
     "html-webpack-plugin": "^2.21.0",
     "webpack": "^1.13.1",
-    "webpack-merge": "^0.14.0"
+    "webpack-merge": "^0.14.0",
+    "webpack-validator": "^2.1.3"
   }
 }
