@@ -4,6 +4,7 @@ const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 
 const parts = require('./libs/parts');
+const pkg = require('./package.json');
 
 const PATHS = {
     app: path.join(__dirname, 'app'),
@@ -15,7 +16,8 @@ const common = {
     // we'll be using the latter form given it's
     // convenient with more complex configs
     entry: {
-        app: PATHS.app
+        app: PATHS.app,
+        vendor: Object.keys(pkg.dependencies)
     },
     output: {
         path: PATHS.build,
