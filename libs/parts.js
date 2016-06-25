@@ -61,8 +61,24 @@ exports.minify = function() {
     return {
         plugins: [
             new webpack.optimize.UglifyJsPlugin({
+                // Dont beautify output (enable for neater output)
+                beautify: false,
+                // eliminate comments
+                comments: false,
+                // complression specific options
                 compress: {
-                    warnings: false
+                    warnings: false,
+                    // drop console statements
+                    drop_console: true
+                },
+                // mangling specific options
+                mangle: {
+                    // dont mangle $
+                    except: ['$'],
+                    // dont care about IE8
+                    screw_ie8: true,
+                    // dont mangle function names
+                    keep_fnames: true
                 }
             })
         ]
