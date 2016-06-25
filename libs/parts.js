@@ -74,7 +74,7 @@ exports.minify = function() {
                 // mangling specific options
                 mangle: {
                     // dont mangle $
-                    except: ['$'],
+                    except: ['webpackJsonp'],
                     // dont care about IE8
                     screw_ie8: true,
                     // dont mangle function names
