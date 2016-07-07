@@ -21,7 +21,10 @@ const common = {
     },
     output: {
         path: PATHS.build,
-        filename: '[name].js'
+        filename: '[name][chunkhash].js',
+        // this is used to require ensure. The setup
+        // will work without but this is useful to setup
+        chunkFilename: '[chunkhash].js'
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -36,7 +39,16 @@ var config;
 switch(process.env.npm_lifecycle_event) {
   case 'build':
     config = merge(common,
-        {devtool: 'source-map'},
+        {
+            devtool: 'source-map',
+            output: {
+                path: PATHS.build,
+                filename: '[name].[chunkhash].js',
+                // this is used for require.ensure. The setup
+                // will work without but this is useful to set.
+                chunkFilename: '[chunkhash].js'
+            }
+        },
         parts.setFreeVariable(
             'process.env.NODE_ENV',
             'production'
