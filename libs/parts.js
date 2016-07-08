@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 exports.setupCSS = function(paths) {
     return {
@@ -122,6 +123,25 @@ exports.clean = function(path) {
                 // project and will fail to work
                 root: process.cwd()
             })
+        ]
+    };
+}
+
+exports.extractCSS = function(paths) {
+    return {
+        module: {
+            loaders: [
+                // Extract CSS during build
+                {
+                    test: /\.css$/,
+                    loader: ExtractTextPlugin.extract('style', 'css'),
+                    include: paths
+                }
+            ]
+        },
+        plugins: [
+            //output extracted CSS to a files
+            new ExtractTextPlugin('[name].[chunkhash].css')
         ]
     };
 }
