@@ -6,6 +6,6 @@ module.exports = function() {
     element.innerHTML = 'Hello Tony';
 
     element.className = styles.redButton;
-    
+
     return element;
 };

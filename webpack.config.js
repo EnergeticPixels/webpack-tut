@@ -8,7 +8,9 @@ const pkg = require('./package.json');
 
 const PATHS = {
     app: path.join(__dirname, 'app'),
+    style: path.join(__dirname, 'app', 'main.css'),
     build: path.join(__dirname, 'build')
+
 };
 
 const common = {
@@ -16,6 +18,7 @@ const common = {
     // we'll be using the latter form given it's
     // convenient with more complex configs
     entry: {
+        style: PATHS.style,
         app: PATHS.app,
         vendor: Object.keys(pkg.dependencies)
     },
@@ -59,13 +62,13 @@ switch(process.env.npm_lifecycle_event) {
             entries: ['react']
         }),
         parts.minify(),
-        parts.extractCSS(PATHS.app)
+        parts.extractCSS(PATHS.style)
     );
     break;
   default:
     config = merge(common,
         {devtool: 'eval-source-map'},
-        parts.setupCSS(PATHS.app),
+        parts.setupCSS(PATHS.style),
         parts.devServer({
             host: process.env.HOST,
             port: process.env.PORT
